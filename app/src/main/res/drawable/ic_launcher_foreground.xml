@@ -1,0 +1,29 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Outer Black Circle - radius decreased and thickness increased -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="12"
+        android:pathData="M50,50m-42,0a42,42 0,1 1,84,0a42,42 0,1 1,-84,0" />
+
+    <!-- Inner Green Circle -->
+    <path
+        android:fillColor="#0D7A57"
+        android:pathData="M50,50m-26,0a26,26 0,1 1,52,0a26,26 0,1 1,-52,0" />
+
+    <!-- Center White Circle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,50m-14,0a14,14 0,1 1,28,0a14,14 0,1 1,-28,0" />
+
+    <!-- Plus Sign -->
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M50,42V58M42,50H58" />
+</vector>
