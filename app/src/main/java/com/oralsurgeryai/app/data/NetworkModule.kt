@@ -32,8 +32,8 @@ object NetworkModule {
         
         val clientBuilder = OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(360, TimeUnit.SECONDS)
-            .writeTimeout(360, TimeUnit.SECONDS)
+            .readTimeout(600, TimeUnit.SECONDS)
+            .writeTimeout(600, TimeUnit.SECONDS)
 
         if (com.oralsurgeryai.app.BuildConfig.DEBUG) {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
