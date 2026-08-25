@@ -1,14 +1,14 @@
 const { createClient } = require('@supabase/supabase-js');
 
-// Config from your provided URL
+// Config from your provided URL and Keys
 const SUPABASE_URL = 'https://kwhhkiidbdykzkahxbpg.supabase.co';
-const SUPABASE_KEY = 'YOUR_SUPABASE_ANON_KEY'; // You need to paste your anon key here from Settings -> API
+const SUPABASE_KEY = 'sb_publishable_9c1db-vHA8PEKpE5fT82Fw_-OoK1AXj'; // Updated with your publishable key
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function verifyPassword() {
     const email = 'pataharsha@gmail.com'; // Using your email from .env
-    const password = 'Killlmonger.09'; // Trying the first password
+    const password = 'Killmonger.09'; // Trying the first password
 
     console.log(`Checking password for ${email}...`);
 
