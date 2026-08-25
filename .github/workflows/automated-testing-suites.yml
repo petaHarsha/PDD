@@ -27,7 +27,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt openpyxl pandas
+          pip install -r requirements.txt httpx openpyxl pandas
 
       - name: Start Mock Target Server in Background
         run: |
@@ -76,7 +76,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt openpyxl pandas
+          pip install -r requirements.txt httpx openpyxl pandas
           cd selenium-tests && npm install --silent || true
 
       - name: Start Target Server
@@ -127,7 +127,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt openpyxl pandas
+          pip install -r requirements.txt httpx openpyxl pandas
           cd appium-tests && npm install --silent || true
 
       - name: Run Appium Mobile Test Suite
@@ -167,7 +167,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt openpyxl pandas
+          pip install -r requirements.txt httpx openpyxl pandas
 
       - name: Start Target Server
         run: |

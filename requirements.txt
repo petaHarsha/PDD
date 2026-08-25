@@ -15,9 +15,14 @@ webdriver-manager>=4.0.1
 
 # Security & API Testing
 requests>=2.31.0
+httpx>=0.25.0
 python-dotenv>=1.0.0
 urllib3>=2.0.0
 pydantic>=2.4.0
+
+# Excel & Data Reporting
+openpyxl>=3.1.0
+pandas>=2.0.0
 
 # Load & Performance Testing
 locust>=2.18.0
