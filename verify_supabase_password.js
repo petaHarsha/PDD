@@ -2,7 +2,7 @@ const { createClient } = require('@supabase/supabase-js');
 
 // Config from your provided URL and Keys
 const SUPABASE_URL = 'https://kwhhkiidbdykzkahxbpg.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_9c1db-vHA8PEKpE5fT82Fw_-OoK1AXj'; // Updated with your publishable key
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt3aGhraWlkYmR5a3prYWh4YnBnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5ODQ3NzYsImV4cCI6MjA5NTU2MDc3Nn0.d35uLMWApktmr8oosnPM6xAuSwJA9vDWk2300aO03G8'; // Updated with your new anon public key
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
