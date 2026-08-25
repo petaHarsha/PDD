@@ -1,0 +1,362 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Oral Surgery AI - Load & Performance Test Execution Report</title>
+        <style>
+            :root { --primary: #0284c7; --bg: #0b1120; --card: #1e293b; --text: #f8fafc; }
+            body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); padding: 25px; margin: 0; }
+            .container { max-width: 1400px; margin: 0 auto; }
+            .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 15px; margin-bottom: 25px; }
+            .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
+            .stat-card { background: var(--card); padding: 20px; border-radius: 10px; border: 1px solid #334155; }
+            .stat-card h3 { margin: 0; font-size: 28px; color: #38bdf8; }
+            .stat-card p { margin: 5px 0 0 0; color: #94a3b8; font-size: 14px; }
+            table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; }
+            th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #334155; font-size: 14px; }
+            th { background: #0f172a; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 12px; }
+            .badge-pass { background: #065f46; color: #6ee7b7; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+            .badge-fail { background: #991b1b; color: #fca5a5; padding: 4px 8px; border-radius: 4px; font-weight: 600; font-size: 12px; }
+            .cat-tag { background: #0369a1; color: white; padding: 3px 6px; border-radius: 4px; font-size: 11px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div>
+                    <h1 style="margin:0; color:#38bdf8;">Load & Performance Test Execution Report</h1>
+                    <p style="margin:5px 0 0 0; color:#94a3b8;">System: Oral Surgery AI Clinical Platform | Generated: 2026-08-15 18:52:26</p>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card"><h3>25</h3><p>Total Load Scenarios</p></div>
+                <div class="stat-card"><h3 style="color:#10b981;">25</h3><p>Passed Scenarios</p></div>
+                <div class="stat-card"><h3 style="color:#10b981;">0</h3><p>Failed Scenarios</p></div>
+                <div class="stat-card"><h3>100.0%</h3><p>Overall Pass Rate (Avg P95: 1.2ms)</p></div>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test ID</th>
+                        <th>Category</th>
+                        <th>Scenario Name</th>
+                        <th>Virtual Users</th>
+                        <th>Avg RT</th>
+                        <th>P95 RT</th>
+                        <th>SLA Target</th>
+                        <th>Error Rate</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td><strong>TC-LOAD-001</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 01 (12 VUs, SLA < 155ms)</td>
+            <td>12 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>155 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-002</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 02 (14 VUs, SLA < 160ms)</td>
+            <td>14 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>160 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-003</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 03 (16 VUs, SLA < 165ms)</td>
+            <td>16 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>165 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-004</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 04 (18 VUs, SLA < 170ms)</td>
+            <td>18 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>170 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-005</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 05 (20 VUs, SLA < 175ms)</td>
+            <td>20 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>175 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-006</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 06 (22 VUs, SLA < 180ms)</td>
+            <td>22 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>180 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-007</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 07 (24 VUs, SLA < 185ms)</td>
+            <td>24 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>185 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-008</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 08 (26 VUs, SLA < 190ms)</td>
+            <td>26 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>190 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-009</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 09 (28 VUs, SLA < 195ms)</td>
+            <td>28 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>195 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-010</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 10 (30 VUs, SLA < 200ms)</td>
+            <td>30 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>200 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-011</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 11 (32 VUs, SLA < 205ms)</td>
+            <td>32 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>205 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-012</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 12 (34 VUs, SLA < 210ms)</td>
+            <td>34 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>210 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-013</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 13 (36 VUs, SLA < 215ms)</td>
+            <td>36 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>215 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-014</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 14 (38 VUs, SLA < 220ms)</td>
+            <td>38 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>220 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-015</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 15 (40 VUs, SLA < 225ms)</td>
+            <td>40 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>225 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-016</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 16 (42 VUs, SLA < 230ms)</td>
+            <td>42 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>230 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-017</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 17 (44 VUs, SLA < 235ms)</td>
+            <td>44 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>235 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-018</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 18 (46 VUs, SLA < 240ms)</td>
+            <td>46 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>240 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-019</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 19 (48 VUs, SLA < 245ms)</td>
+            <td>48 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>245 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-020</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 20 (50 VUs, SLA < 250ms)</td>
+            <td>50 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>250 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-021</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 21 (52 VUs, SLA < 255ms)</td>
+            <td>52 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>255 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-022</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 22 (54 VUs, SLA < 260ms)</td>
+            <td>54 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>260 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-023</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 23 (56 VUs, SLA < 265ms)</td>
+            <td>56 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>265 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-024</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 24 (58 VUs, SLA < 270ms)</td>
+            <td>58 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>270 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+        <tr>
+            <td><strong>TC-LOAD-025</strong></td>
+            <td><span class="cat-tag">LOAD / PERFORMANCE: Normal Baseline Traffic</span></td>
+            <td>Normal Baseline Traffic - Scenario 25 (60 VUs, SLA < 275ms)</td>
+            <td>60 VUs</td>
+            <td>1.2 ms</td>
+            <td><strong>1.2 ms</strong></td>
+            <td>275 ms</td>
+            <td>0.0%</td>
+            <td><span class="badge-pass">PASSED</span></td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </body>
+    </html>
+    

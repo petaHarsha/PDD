@@ -1,0 +1,52 @@
+{
+  "target_scope": {
+    "allowed_hosts": ["127.0.0.1", "localhost", "api-staging.oralsurgery.ai"],
+    "disallowed_actions": ["destructive_drop_table", "dos_amplification", "production_data_purge"]
+  },
+  "sql_injection": {
+    "test_payloads": [
+      "' OR '1'='1",
+      "' OR '1'='1' --",
+      "admin' --",
+      "1' UNION SELECT null, null, null--",
+      "'; WAITFOR DELAY '0:0:5'--",
+      "1' AND SLEEP(3)--",
+      "' OR ''='",
+      "1 OR 1=1"
+    ]
+  },
+  "xss": {
+    "test_payloads": [
+      "<script>alert('XSS_TEST')</script>",
+      "<img src=x onerror=alert(1)>",
+      "javascript:alert(1)",
+      "<svg onload=alert('XSS')>",
+      "\"><script>alert(document.cookie)</script>",
+      "<iframe src=\"javascript:alert(1)\">"
+    ]
+  },
+  "security_headers": {
+    "required_headers": [
+      "X-Content-Type-Options",
+      "X-Frame-Options",
+      "Content-Security-Policy",
+      "Strict-Transport-Security",
+      "Referrer-Policy"
+    ]
+  },
+  "jwt_security": {
+    "test_none_algorithm": true,
+    "test_expired_token": true,
+    "test_tampered_signature": true,
+    "test_weak_secret_bruteforce": true
+  },
+  "rate_limiting": {
+    "max_requests_per_minute": 60,
+    "otp_attempt_threshold": 5,
+    "expected_block_status": 429
+  },
+  "file_upload": {
+    "dangerous_extensions": [".php", ".py", ".sh", ".exe", ".jsp", ".asp", ".html"],
+    "max_file_size_mb": 100
+  }
+}

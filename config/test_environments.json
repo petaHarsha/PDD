@@ -1,0 +1,56 @@
+{
+  "active_environment": "local",
+  "environments": {
+    "local": {
+      "name": "Local Development / Mock Server",
+      "api_base_url": "http://127.0.0.1:8000",
+      "web_base_url": "http://127.0.0.1:5173",
+      "appium_server_url": "http://127.0.0.1:4723",
+      "mock_server_url": "http://127.0.0.1:8000",
+      "credentials": {
+        "admin": {
+          "email": "master.admin@oralsurgery.ai",
+          "password": "AdminSecurePassword123!",
+          "role": "MasterAdmin"
+        },
+        "surgeon": {
+          "email": "dr.smith@oralsurgery.ai",
+          "password": "SurgeonSecurePassword123!",
+          "role": "Surgeon"
+        },
+        "standard_user": {
+          "email": "patient.john@example.com",
+          "password": "PatientSecurePassword123!",
+          "role": "User"
+        }
+      }
+    },
+    "staging": {
+      "name": "Staging Environment",
+      "api_base_url": "https://api-staging.oralsurgery.ai",
+      "web_base_url": "https://staging.oralsurgery.ai",
+      "appium_server_url": "http://127.0.0.1:4723",
+      "credentials": {
+        "admin": {
+          "email": "staging.admin@oralsurgery.ai",
+          "password": "StagingAdminPassword2026!",
+          "role": "MasterAdmin"
+        }
+      }
+    },
+    "ci": {
+      "name": "GitHub Actions CI / Local Runner",
+      "api_base_url": "http://127.0.0.1:8000",
+      "web_base_url": "http://127.0.0.1:8000",
+      "appium_server_url": "http://127.0.0.1:4723",
+      "mock_server_url": "http://127.0.0.1:8000",
+      "credentials": {
+        "admin": {
+          "email": "ci.admin@oralsurgery.ai",
+          "password": "CIAdminPassword123!",
+          "role": "MasterAdmin"
+        }
+      }
+    }
+  }
+}

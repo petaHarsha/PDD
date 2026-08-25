@@ -1,0 +1,234 @@
+name: Automated Testing Suites & Excel Reports CI/CD
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master, develop ]
+  workflow_dispatch:
+
+jobs:
+  # -------------------------------------------------------------
+  # JOB 1: Vulnerability & Security Automation Suite
+  # -------------------------------------------------------------
+  vulnerability-tests:
+    name: 🛡️ Security & Vulnerability Tests (SAST / DAST)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt openpyxl pandas
+
+      - name: Start Mock Target Server in Background
+        run: |
+          python -m uvicorn mock_server.server:app --host 127.0.0.1 --port 8000 &
+          sleep 3
+
+      - name: Verify Server Health
+        run: |
+          curl -f http://127.0.0.1:8000/health || exit 1
+
+      - name: Run Vulnerability & Security Tests
+        run: |
+          mkdir -p reports "Vulnerability Test Results"
+          pytest tests/vulnerability -v --junitxml=reports/vulnerability_junit.xml
+
+      - name: Upload Security Test Reports & Excel Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: security-vulnerability-reports-and-excel
+          path: |
+            Vulnerability Test Results/*
+            reports/sample_vulnerability_report.html
+          retention-days: 30
+
+  # -------------------------------------------------------------
+  # JOB 2: Selenium Web Automation Suite (300+ Cases)
+  # -------------------------------------------------------------
+  selenium-tests:
+    name: 🌐 Selenium Web Automation Tests (300+ Cases)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11 & Node.js
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt openpyxl pandas
+          cd selenium-tests && npm install --silent || true
+
+      - name: Start Target Server
+        run: |
+          python -m uvicorn mock_server.server:app --host 127.0.0.1 --port 8000 &
+          sleep 3
+
+      - name: Run Selenium Web Tests
+        env:
+          USE_LIVE_BROWSER: "false"
+          TEST_WEB_URL: "http://127.0.0.1:8000"
+        run: |
+          mkdir -p reports/screenshots
+          pytest tests/selenium -v --junitxml=reports/selenium_junit.xml
+
+      - name: Upload Selenium Test Report & Excel Sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-web-reports-and-excel
+          path: |
+            selenium-tests/selenium_test_cases.xlsx
+            reports/selenium_test_cases.xlsx
+            reports/sample_selenium_report.html
+            reports/screenshots/*
+          retention-days: 30
+
+  # -------------------------------------------------------------
+  # JOB 3: Appium Mobile Automation Suite (300+ Cases)
+  # -------------------------------------------------------------
+  appium-tests:
+    name: 📱 Appium Mobile Automation Tests (300+ Cases)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11 & Node.js
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt openpyxl pandas
+          cd appium-tests && npm install --silent || true
+
+      - name: Run Appium Mobile Test Suite
+        env:
+          USE_LIVE_APPIUM: "false"
+        run: |
+          mkdir -p reports
+          pytest tests/appium -v --junitxml=reports/appium_junit.xml
+
+      - name: Upload Appium Test Report & Excel Sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-mobile-reports-and-excel
+          path: |
+            appium-tests/appium_test_cases.xlsx
+            reports/appium_test_cases.xlsx
+            reports/sample_appium_report.html
+          retention-days: 30
+
+  # -------------------------------------------------------------
+  # JOB 4: Load & Performance Testing Suite (300+ Scenarios)
+  # -------------------------------------------------------------
+  load-tests:
+    name: ⚡ Load & Performance Tests (300+ Scenarios)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt openpyxl pandas
+
+      - name: Start Target Server
+        run: |
+          python -m uvicorn mock_server.server:app --host 127.0.0.1 --port 8000 &
+          sleep 3
+
+      - name: Execute High-Concurrency Load Suite
+        run: |
+          mkdir -p reports
+          python tests/load/load_test_runner.py --url http://127.0.0.1:8000 --limit 50 --output-html reports/load_test_report.html --output-json reports/load_test_results.json
+
+      - name: Upload Load & Performance Report & Excel Sheet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-performance-reports-and-excel
+          path: |
+            reports/load_test_cases.xlsx
+            reports/load_test_report.html
+            reports/load_test_results.json
+          retention-days: 30
+
+  # -------------------------------------------------------------
+  # JOB 5: Consolidated Summary & Master Artifact Packaging
+  # -------------------------------------------------------------
+  package-all-artifacts:
+    name: 📦 Package Master Excel & Project Artifact ZIP
+    needs: [vulnerability-tests, selenium-tests, appium-tests, load-tests]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Packaging Dependencies
+        run: pip install openpyxl pandas
+
+      - name: Build Downloadable Testing ZIP Artifact
+        run: |
+          python create_zip_artifact.py
+
+      - name: Upload Master Complete Testing ZIP Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: complete-automated-testing-project-zip
+          path: automated_testing_project.zip
+          retention-days: 30
+
+      - name: Upload All Excel Test Reports in One Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: all-excel-test-reports
+          path: |
+            reports/*.xlsx
+            selenium-tests/*.xlsx
+            appium-tests/*.xlsx
+            Vulnerability Test Results/*.xlsx
+            docs/*.csv
+          retention-days: 30

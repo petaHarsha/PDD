@@ -1,0 +1,61 @@
+name: Load & Performance Testing Gate (k6 & Locust)
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Nightly at 2 AM
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'Target API Base URL'
+        required: true
+        default: 'http://127.0.0.1:8000'
+      scenarios_count:
+        description: 'Number of unique scenarios to execute'
+        required: true
+        default: '100'
+
+jobs:
+  k6-performance-gate:
+    name: 🚀 k6 Threshold & SLA Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Start Mock Server
+        run: |
+          python -m uvicorn mock_server.server:app --host 127.0.0.1 --port 8000 &
+          sleep 3
+
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run k6 Load Test Suite
+        env:
+          TARGET_URL: 'http://127.0.0.1:8000'
+        run: |
+          k6 run tests/load/k6_load_test_suite.js
+
+      - name: Execute Full Async Python 300+ Scenarios Runner
+        run: |
+          python tests/load/load_test_runner.py --url http://127.0.0.1:8000 --limit ${{ github.event.inputs.scenarios_count || 100 }}
+
+      - name: Upload Performance Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-and-locust-performance-reports
+          path: reports/load*

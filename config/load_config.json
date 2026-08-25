@@ -1,0 +1,38 @@
+{
+  "target_base_url": "http://127.0.0.1:8000",
+  "sla_thresholds": {
+    "p95_response_time_ms": 500,
+    "p99_response_time_ms": 1000,
+    "max_error_rate_percentage": 1.0,
+    "min_successful_requests_rate": 99.0
+  },
+  "profiles": {
+    "smoke": {
+      "virtual_users": 5,
+      "spawn_rate": 1,
+      "duration": "30s"
+    },
+    "load_standard": {
+      "virtual_users": 50,
+      "spawn_rate": 5,
+      "duration": "2m"
+    },
+    "stress_heavy": {
+      "virtual_users": 200,
+      "spawn_rate": 20,
+      "duration": "5m"
+    },
+    "spike_test": {
+      "virtual_users": 500,
+      "spawn_rate": 100,
+      "duration": "1m"
+    },
+    "soak_endurance": {
+      "virtual_users": 30,
+      "spawn_rate": 2,
+      "duration": "10m"
+    }
+  },
+  "total_unique_scenarios_count": 345,
+  "categories_count": 20
+}

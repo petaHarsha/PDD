@@ -1,0 +1,38 @@
+{
+  "browser": "chrome",
+  "headless": true,
+  "window_size": {
+    "width": 1920,
+    "height": 1080
+  },
+  "responsive_viewports": {
+    "mobile_portrait": {"width": 375, "height": 812},
+    "mobile_landscape": {"width": 812, "height": 375},
+    "tablet_portrait": {"width": 768, "height": 1024},
+    "desktop_standard": {"width": 1440, "height": 900},
+    "desktop_wide": {"width": 1920, "height": 1080}
+  },
+  "timeouts": {
+    "implicit_wait_seconds": 10,
+    "explicit_wait_seconds": 15,
+    "page_load_seconds": 30,
+    "script_timeout_seconds": 30
+  },
+  "chrome_options": [
+    "--headless=new",
+    "--no-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu",
+    "--disable-extensions",
+    "--disable-infobars",
+    "--remote-allow-origins=*",
+    "--ignore-certificate-errors"
+  ],
+  "firefox_options": [
+    "-headless",
+    "--width=1920",
+    "--height=1080"
+  ],
+  "screenshot_on_failure": true,
+  "screenshot_dir": "./reports/screenshots"
+}

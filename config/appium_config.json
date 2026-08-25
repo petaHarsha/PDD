@@ -1,0 +1,49 @@
+{
+  "server": {
+    "host": "127.0.0.1",
+    "port": 4723,
+    "path": "/wd/hub",
+    "timeout_seconds": 60
+  },
+  "default_platform": "android",
+  "devices": {
+    "android_emulator": {
+      "platformName": "Android",
+      "automationName": "UiAutomator2",
+      "deviceName": "Pixel_7_API_34",
+      "platformVersion": "14.0",
+      "appPackage": "com.oralsurgeryai.app",
+      "appActivity": "com.oralsurgeryai.app.MainActivity",
+      "app": "./Android-App/app/build/outputs/apk/debug/app-debug.apk",
+      "noReset": false,
+      "fullReset": false,
+      "autoGrantPermissions": true,
+      "newCommandTimeout": 300,
+      "uiautomator2ServerLaunchTimeout": 60000,
+      "adbExecTimeout": 60000
+    },
+    "android_real_device": {
+      "platformName": "Android",
+      "automationName": "UiAutomator2",
+      "deviceName": "Samsung_Galaxy_S23",
+      "udid": "auto",
+      "appPackage": "com.oralsurgeryai.app",
+      "appActivity": "com.oralsurgeryai.app.MainActivity",
+      "noReset": true,
+      "autoGrantPermissions": true
+    },
+    "ios_simulator": {
+      "platformName": "iOS",
+      "automationName": "XCUITest",
+      "deviceName": "iPhone 15 Pro",
+      "platformVersion": "17.2",
+      "bundleId": "com.oralsurgeryai.app",
+      "noReset": false
+    }
+  },
+  "timeouts": {
+    "implicit_wait_seconds": 10,
+    "explicit_wait_seconds": 20,
+    "page_load_seconds": 30
+  }
+}
